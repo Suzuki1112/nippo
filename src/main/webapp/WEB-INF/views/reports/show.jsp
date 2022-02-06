@@ -45,7 +45,14 @@
                 <a href="<c:url value='?action=${actRep}&command=${commEdt}&id=${report.id}' />">この日報を編集する</a>
             </p>
         </c:if>
-
+        
+       <form action="<c:url value='?action=${Good}&command=${GoodCreate}' />" method="POST">
+       <input type="hidden" name="id" value="${report.id}" />
+        <p>
+        <input type="submit" value="いいね!"/>
+        </p>
+        </form>
+        
         <p>
             <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">一覧に戻る</a>
         </p>

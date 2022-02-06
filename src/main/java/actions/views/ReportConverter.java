@@ -18,6 +18,7 @@ public class ReportConverter {
      */
     public static Report toModel(ReportView rv) {
         return new Report(
+                
                 rv.getId(),
                 EmployeeConverter.toModel(rv.getEmployee()),
                 rv.getReportDate(),

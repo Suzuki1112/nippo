@@ -93,5 +93,6 @@ public class Employee {
      */
     @Column(name = JpaConst.EMP_COL_DELETE_FLAG, nullable = false)
     private Integer deleteFlag;
+    
 
 }

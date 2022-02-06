@@ -33,6 +33,7 @@ public interface JpaConst {
     String TABLE_REP = "reports"; //テーブル名
     //日報テーブルカラム
     String REP_COL_ID = "id"; //id
+    String REP_COL_REP_ID = "report_id"; //レポートのid
     String REP_COL_EMP = "employee_id"; //日報を作成した従業員のid
     String REP_COL_REP_DATE = "report_date"; //いつの日報かを示す日付
     String REP_COL_TITLE = "title"; //日報のタイトル
@@ -49,6 +50,14 @@ public interface JpaConst {
     String JPQL_PARM_PASSWORD = "password"; //パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; //従業員
 
+    //いいねテーブル
+    String TABLE_GOOD = "good"; //テーブル名
+    //いいねテーブルカラム
+    String GOOD_COL_ID = "id"; //id
+    String GOOD_COL_EMP = "goodemp_id"; //日報をいいねした従業員のID
+    String GOOD_COL_REP = "goodrep_id"; //いいねされた日報のID
+    
+    
     //NamedQueryの nameとquery
     //全ての従業員をidの降順に取得する
     String Q_EMP_GET_ALL = ENTITY_EMP + ".getAll"; //name
@@ -74,5 +83,6 @@ public interface JpaConst {
     //指定した従業員が作成した日報の件数を取得する
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
+
 
 }
