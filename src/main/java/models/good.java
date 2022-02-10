@@ -21,7 +21,7 @@ import lombok.Setter;
  * 日報データのDTOモデル
  *
  */
-@Table(name = JpaConst.TABLE_REP)
+@Table(name = JpaConst.TABLE_GOOD)
 @NamedQueries({
 
 })
@@ -45,14 +45,14 @@ public class good {
      * 日報を閲覧している従業員ID
      */
     @ManyToOne
-    @JoinColumn(name = JpaConst.REP_COL_EMP, nullable = false)
+    @JoinColumn(name = JpaConst.GOOD_COL_EMP, nullable = false)
     private Employee employee;
     
     /**
      * 日報のID
      */
     @ManyToOne
-    @JoinColumn(name = JpaConst.REP_COL_REP_ID, nullable = false)
+    @JoinColumn(name = JpaConst.GOOD_COL_REP, nullable = false)
     private Report report;
  
     

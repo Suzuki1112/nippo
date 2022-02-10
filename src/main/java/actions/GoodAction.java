@@ -37,7 +37,8 @@ public class GoodAction extends ActionBase {
       //idを条件に日報データを取得する
         ReportView rv = service.findOneRep(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
-      //セッションからログイン中の従業員情報を取得
+
+        //セッションからログイン中の従業員情報を取得
         EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
         
         
