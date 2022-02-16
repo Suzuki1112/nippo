@@ -6,6 +6,10 @@
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdt" value="${ForwardConst.CMD_EDIT.getValue()}" />
+<c:set var="Good" value="${ForwardConst.ACT_GOOD.getValue() }" />
+<c:set var="goodCreate" value="${ForwardConst.CMD_GOODCREATE.getValue() }" />
+<c:set var="goodDestroy" value="${ForwardConst.CMD_GOODDESTROY.getValue() }" />
+
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
@@ -46,11 +50,16 @@
             </p>
         </c:if>
         
-       <form action="<c:url value='?action=${Good}&command=${GoodCreate}' />" method="POST">
+       <form action="<c:url value='?action=${Good}&command=${goodCreate}' />" method="POST">
        <input type="hidden" name="id" value="${report.id}" />
         <p>
         <input type="submit" value="いいね!"/>
         </p>
+        </form>
+        <form action="<c:url value='?action=${Good}&command=${goodDestroy}' />" method="POST">
+        <input type="hidden" name="id" value="${report.id}" />
+        <p>
+        <input type="submit" value="いいねを解除する"/>
         </form>
         
         <p>

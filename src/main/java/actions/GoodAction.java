@@ -32,7 +32,7 @@ public class GoodAction extends ActionBase {
      * @throws ServletException
      * @throws IOException
      */
-    public void GoodCreate() throws ServletException, IOException {
+    public void goodCreate() throws ServletException, IOException {
 
       //idを条件に日報データを取得する
         ReportView rv = service.findOneRep(toNumber(getRequestParam(AttributeConst.REP_ID)));
@@ -55,4 +55,22 @@ public class GoodAction extends ActionBase {
         forward(ForwardConst.FW_REP_SHOW);
 
     }
-}
+    public void goodDestroy() throws ServletException, IOException{
+
+        ReportView rv = service.findOneRep(toNumber(getRequestParam(AttributeConst.REP_ID)));
+        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+        
+        GoodView gv = new GoodView(
+                null,
+                ev,
+                rv);
+
+        service.destroy(gv);
+        
+        putRequestScope(AttributeConst.REPORT, rv);
+        
+        forward(ForwardConst.FW_REP_SHOW);
+
+            }
+    }
+

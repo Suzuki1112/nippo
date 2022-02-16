@@ -58,4 +58,14 @@ public class GoodService extends ServiceBase {
         em.getTransaction().commit();
 
     }
+    
+    public List<String> destroy(GoodView gv) {
+             destroyInternal(gv);
+             return null;
+    }
+    private void destroyInternal(GoodView gv) {
+        em.getTransaction().begin();
+        em.remove(GoodConverter.toModel(gv));       // データ削除
+        em.getTransaction().commit();
+    }
 }
