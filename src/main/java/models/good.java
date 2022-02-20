@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import constants.JpaConst;
@@ -23,6 +24,9 @@ import lombok.Setter;
  */
 @Table(name = JpaConst.TABLE_GOOD)
 @NamedQueries({
+    @NamedQuery(
+            name = JpaConst.Q_GOOD_GET_REPORT_AND_EMPLOYEE,
+            query = JpaConst.Q_GOOD_GET_REPORT_AND_EMPLOYEE_DEF),
 
 })
 

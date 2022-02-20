@@ -10,6 +10,7 @@ import actions.views.ReportConverter;
 import actions.views.ReportView;
 import models.Employee;
 import models.Report;
+import models.good;
 
 public class GoodService extends ServiceBase {
 
@@ -52,7 +53,6 @@ public class GoodService extends ServiceBase {
 
     
     private void createInternal(GoodView gv) {
-
         em.getTransaction().begin();
         em.persist(GoodConverter.toModel(gv));
         em.getTransaction().commit();
@@ -68,4 +68,18 @@ public class GoodService extends ServiceBase {
         em.remove(GoodConverter.toModel(gv));       // データ削除
         em.getTransaction().commit();
     }
+    /**
+     * idを条件に取得したデータをEmployeeViewのインスタンスで返却する
+     * @param id
+     * @return 取得データのインスタンス
+     */
+    public GoodView findOne(int id) {
+        good g = findOneInternal(id);
+        return GoodConverter.toView(g);
+}
+    private good findOneInternal(int id) {
+        good g = em.find(good.class, id);
+
+        return g;
+}
 }

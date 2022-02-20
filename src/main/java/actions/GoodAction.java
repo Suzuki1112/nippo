@@ -60,10 +60,7 @@ public class GoodAction extends ActionBase {
         ReportView rv = service.findOneRep(toNumber(getRequestParam(AttributeConst.REP_ID)));
         EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
         
-        GoodView gv = new GoodView(
-                null,
-                ev,
-                rv);
+        GoodView gv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
         service.destroy(gv);
         
