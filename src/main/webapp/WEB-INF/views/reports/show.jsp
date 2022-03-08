@@ -49,19 +49,23 @@
                 <a href="<c:url value='?action=${actRep}&command=${commEdt}&id=${report.id}' />">この日報を編集する</a>
             </p>
         </c:if>
-        
+<c:choose>
+<c:when test="${good == 0}">
        <form action="<c:url value='?action=${Good}&command=${goodCreate}' />" method="POST">
        <input type="hidden" name="id" value="${report.id}" />
         <p>
         <input type="submit" value="いいね!"/>
         </p>
         </form>
+        </c:when>
+<c:otherwise>
         <form action="<c:url value='?action=${Good}&command=${goodDestroy}' />" method="POST">
         <input type="hidden" name="id" value="${report.id}" />
         <p>
         <input type="submit" value="いいねを解除する"/>
         </form>
-        
+        </c:otherwise>
+        </c:choose>
         <p>
             <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">一覧に戻る</a>
         </p>

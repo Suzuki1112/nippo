@@ -60,14 +60,22 @@ public class GoodAction extends ActionBase {
         ReportView rv = service.findOneRep(toNumber(getRequestParam(AttributeConst.REP_ID)));
         EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
         
-        GoodView gv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
-        service.destroy(gv);
+        service.destroy(ev, rv);
         
         putRequestScope(AttributeConst.REPORT, rv);
         
         forward(ForwardConst.FW_REP_SHOW);
 
             }
+    public long goodFind() throws ServletException, IOException{
+        
+        ReportView rv = service.findOneRep(toNumber(getRequestParam(AttributeConst.REP_ID)));
+        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+        
+        long good = service.findgood(ev, rv);
+        
+        return good;
+    }
     }
 

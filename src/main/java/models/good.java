@@ -27,6 +27,10 @@ import lombok.Setter;
     @NamedQuery(
             name = JpaConst.Q_GOOD_GET_REPORT_AND_EMPLOYEE,
             query = JpaConst.Q_GOOD_GET_REPORT_AND_EMPLOYEE_DEF),
+    @NamedQuery(
+            name = JpaConst.Q_GOOD_GET_REPORT_AND_EMPLOYEE_COUNT,
+            query = JpaConst.Q_GOOD_GET_REPORT_AND_EMPLOYEE_COUNT_DEF)
+    
 
 })
 

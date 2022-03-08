@@ -8,6 +8,7 @@ import actions.views.GoodConverter;
 import actions.views.GoodView;
 import actions.views.ReportConverter;
 import actions.views.ReportView;
+import constants.JpaConst;
 import models.Employee;
 import models.Report;
 import models.good;
@@ -59,13 +60,18 @@ public class GoodService extends ServiceBase {
 
     }
     
-    public List<String> destroy(GoodView gv) {
-             destroyInternal(gv);
+    
+    public good destroy(EmployeeView ev, ReportView rv) {
+        List<good> goods =  em.createNamedQuery(JpaConst.Q_GOOD_GET_REPORT_AND_EMPLOYEE, good.class)
+                .setParameter(JpaConst.GOOD_EMP, EmployeeConverter.toModel(ev))
+                .setParameter(JpaConst.GOOD_REP, ReportConverter.toModel(rv))
+                .getResultList();
+        destroyInternal(goods.get(0));
              return null;
     }
-    private void destroyInternal(GoodView gv) {
+    private void destroyInternal(good g) {
         em.getTransaction().begin();
-        em.remove(GoodConverter.toModel(gv));       // データ削除
+        em.remove(g);       // データ削除
         em.getTransaction().commit();
     }
     /**
@@ -82,4 +88,11 @@ public class GoodService extends ServiceBase {
 
         return g;
 }
+    public long findgood(EmployeeView ev, ReportView rv) {
+        long good = em.createNamedQuery(JpaConst.Q_GOOD_GET_REPORT_AND_EMPLOYEE_COUNT, Long.class)
+                .setParameter(JpaConst.GOOD_EMP, EmployeeConverter.toModel(ev))
+                .setParameter(JpaConst.GOOD_REP, ReportConverter.toModel(rv))
+                .getSingleResult();
+        return good;
+    }
 }

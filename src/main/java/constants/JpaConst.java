@@ -89,6 +89,7 @@ public interface JpaConst {
     //指定した従業員がいいねした特定の日報を取得する
     String Q_GOOD_GET_REPORT_AND_EMPLOYEE = ENTITY_GOOD + ".getAll";
     String Q_GOOD_GET_REPORT_AND_EMPLOYEE_DEF = "SELECT g FROM good AS g WHERE g.employee = :" + GOOD_EMP   + " AND g.report = :" + GOOD_REP;
-
+    String Q_GOOD_GET_REPORT_AND_EMPLOYEE_COUNT = ENTITY_GOOD + ".getAllCOUNT";
+    String Q_GOOD_GET_REPORT_AND_EMPLOYEE_COUNT_DEF = "SELECT COUNT(g) FROM good AS g WHERE g.employee = :" + GOOD_EMP   + " AND g.report = :" + GOOD_REP;
 
 }

@@ -12,6 +12,7 @@ import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
 import constants.MessageConst;
+import services.GoodService;
 import services.ReportService;
 
 /**
@@ -21,7 +22,7 @@ import services.ReportService;
 public class ReportAction extends ActionBase {
 
     private ReportService service;
-
+    private GoodService goodservice;
     /**
      * メソッドを実行する
      */
@@ -29,6 +30,7 @@ public class ReportAction extends ActionBase {
     public void process() throws ServletException, IOException {
 
         service = new ReportService();
+        goodservice = new GoodService();
 
         //メソッドを実行
         invoke();
@@ -147,15 +149,16 @@ public class ReportAction extends ActionBase {
 
         //idを条件に日報データを取得する
         ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
+        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 
         if (rv == null) {
             //該当の日報データが存在しない場合はエラー画面を表示
             forward(ForwardConst.FW_ERR_UNKNOWN);
 
         } else {
-
+            long good = goodservice.findgood(ev, rv);
             putRequestScope(AttributeConst.REPORT, rv); //取得した日報データ
-
+            putRequestScope(AttributeConst.GOOD_GOOD, good);
             //詳細画面を表示
             forward(ForwardConst.FW_REP_SHOW);
         }
