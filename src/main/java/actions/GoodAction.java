@@ -49,10 +49,8 @@ public class GoodAction extends ActionBase {
                 rv);
       //情報登録
         service.create(gv);
-        
-        putRequestScope(AttributeConst.REPORT, rv); //取得した日報データ
-        //show画面にリダイレクト
-        forward(ForwardConst.FW_REP_SHOW);
+        putRequestScope(AttributeConst.REPORT, rv);
+        this.goodredirect(ForwardConst.ACT_REP, ForwardConst.CMD_SHOW, rv.getId());
 
     }
     public void goodDestroy() throws ServletException, IOException{
@@ -63,9 +61,7 @@ public class GoodAction extends ActionBase {
 
         service.destroy(ev, rv);
         
-        putRequestScope(AttributeConst.REPORT, rv);
-        
-        forward(ForwardConst.FW_REP_SHOW);
+        this.goodredirect(ForwardConst.ACT_REP, ForwardConst.CMD_SHOW, rv.getId());
 
             }
     public long goodFind() throws ServletException, IOException{
