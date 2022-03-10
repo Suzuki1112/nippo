@@ -62,7 +62,7 @@ public class GoodAction extends ActionBase {
         
         this.goodredirect(ForwardConst.ACT_REP, ForwardConst.CMD_SHOW, rv.getId());
 
-            }
+    }
     public long goodFind() throws ServletException, IOException{
         
         ReportView rv = service.findOneRep(toNumber(getRequestParam(AttributeConst.REP_ID)));
