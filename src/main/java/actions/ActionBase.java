@@ -117,14 +117,6 @@ public abstract class ActionBase {
     }
     protected void goodredirect(ForwardConst action, ForwardConst command, int id)
             throws ServletException, IOException {
-
-        //URLを構築
-        String redirectUrl = request.getContextPath() + "/?action=" + action.getValue();
-        if (command != null) {
-            redirectUrl = redirectUrl + "&command=" + command.getValue(); 
-        }
-
-
         //URLへリダイレクト
         response.sendRedirect(request.getContextPath() + "/?action=" + action.getValue() + "&command=" + command.getValue() + "&id=" + id);
 

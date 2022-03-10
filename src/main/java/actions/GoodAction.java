@@ -49,7 +49,6 @@ public class GoodAction extends ActionBase {
                 rv);
       //情報登録
         service.create(gv);
-        putRequestScope(AttributeConst.REPORT, rv);
         this.goodredirect(ForwardConst.ACT_REP, ForwardConst.CMD_SHOW, rv.getId());
 
     }
